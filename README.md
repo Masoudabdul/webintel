@@ -10,6 +10,8 @@
 
 WebIntel is a **superfast AI-powered web intelligence system** that provides real-time web research, comprehensive analysis, and intelligent insights using Google Gemini 2.0 Flash. Get comprehensive research results in **10-20 seconds** with **90%+ success rate**.
 
+## 🚧 Heads up! This package is still cooking 🍳 — some stuff might break, glitch, or ghost you. Use at your own risk, and PRs are always welcome 😎 ##
+
 ## 🚀 Key Features
 
 - **🔍 Multi-Engine Search**: Searches across DuckDuckGo, Bing, and Google simultaneously with intelligent fallback mechanisms
@@ -353,7 +355,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **GitHub Issues**: [Report bugs or request features](https://github.com/JustM3Sunny/webintel/issues)
 - **GitHub Discussions**: [Community discussions](https://github.com/JustM3Sunny/webintel/discussions)
 - **PyPI Package**: [webintel on PyPI](https://pypi.org/project/webintel/2.0.3/)
-- **Email Support**: justm3sunny@gmail.com
+- **Email Support**: justaskcoding76@gmail.com
 
 ## 🔗 Quick Links
 
