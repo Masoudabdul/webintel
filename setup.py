@@ -7,7 +7,13 @@ from pathlib import Path
 
 # Read README
 readme_path = Path(__file__).parent / "README.md"
-long_description = readme_path.read_text(encoding="utf-8") if readme_path.exists() else ""
+try:
+    long_description = readme_path.read_text(encoding="utf-8") if readme_path.exists() else ""
+except UnicodeDecodeError:
+    try:
+        long_description = readme_path.read_text(encoding="utf-16") if readme_path.exists() else ""
+    except:
+        long_description = "WebIntel - Advanced Web Intelligence System"
 
 # Read requirements
 requirements_path = Path(__file__).parent / "requirements.txt"
@@ -19,13 +25,13 @@ if requirements_path.exists():
 setup(
     name="webintel",
     version="2.0.0",
-    author="WebIntel Development Team",
-    author_email="dev@webintel.ai",
+    author="JustM3Sunny",
+    author_email="justm3sunny@gmail.com",
     description="🤖 AI-Powered Web Intelligence System - Real-time research, comprehensive analysis, and intelligent insights using Google Gemini 2.0 Flash",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://webintel.github.io/webintel/",
-    download_url="https://github.com/webintel/webintel/archive/v2.0.0.tar.gz",
+    url="https://github.com/JustM3Sunny/webintel",
+    download_url="https://github.com/JustM3Sunny/webintel/archive/v2.0.0.tar.gz",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -88,12 +94,12 @@ setup(
         "technology trends", "cli tool", "python api", "async", "fast", "reliable"
     ],
     project_urls={
-        "Homepage": "https://webintel.github.io/webintel/",
-        "Documentation": "https://webintel.github.io/webintel/",
-        "Repository": "https://github.com/webintel/webintel",
-        "Bug Reports": "https://github.com/webintel/webintel/issues",
-        "Feature Requests": "https://github.com/webintel/webintel/discussions",
-        "Changelog": "https://github.com/webintel/webintel/releases",
+        "Homepage": "https://github.com/JustM3Sunny/webintel",
+        "Documentation": "https://github.com/JustM3Sunny/webintel#readme",
+        "Repository": "https://github.com/JustM3Sunny/webintel",
+        "Bug Reports": "https://github.com/JustM3Sunny/webintel/issues",
+        "Feature Requests": "https://github.com/JustM3Sunny/webintel/discussions",
+        "Changelog": "https://github.com/JustM3Sunny/webintel/releases",
         "PyPI": "https://pypi.org/project/webintel/",
     },
     include_package_data=True,
