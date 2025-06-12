@@ -1,6 +1,6 @@
 # 🧠 WebIntel - Advanced Web Intelligence System
 
-[![PyPI version](https://badge.fury.io/py/webintel.svg)](https://pypi.org/project/webintel/2.0.3/)
+[![PyPI version](https://badge.fury.io/py/webintel.svg)](https://pypi.org/project/webintel/2.0.4/)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/JustM3Sunny/webintel.svg)](https://github.com/JustM3Sunny/webintel/stargazers)
@@ -23,23 +23,27 @@ WebIntel is a **superfast AI-powered web intelligence system** that provides rea
 
 ### 🎯 Quick Install (Recommended)
 ```bash
-# Install from PyPI
+# Standard installation
 pip install webintel
 
 # Verify installation
 webintel --version
 ```
 
+> **💡 Note**: For global CLI access, see installation methods below.
+
 ### ⚙️ Alternative Installation Methods
 
 #### 🌍 Global Installation (Recommended for CLI usage)
 ```bash
-# Install globally for all users (requires admin/sudo)
-pip install --global webintel
+# Windows (Run as Administrator)
+pip install webintel
 
-# Or install globally with elevated permissions
-sudo pip install webintel  # Linux/macOS
-# Run as Administrator on Windows, then: pip install webintel
+# Linux/macOS (Global system installation)
+sudo pip install webintel
+
+# Or install for all users (Windows with admin rights)
+python -m pip install webintel
 ```
 
 #### Using pipx (Isolated CLI installation)
@@ -68,7 +72,26 @@ pip install -e .
 - **Internet**: Stable connection required
 - **Memory**: 512MB RAM minimum
 
-### 📦 Package Information
+### � Troubleshooting Installation
+
+#### Command Not Found Error
+If you get `webintel: command not found` after installation:
+
+```bash
+# Check if webintel is installed
+pip show webintel
+
+# If installed but command not found, try:
+python -m webintel.cli search "test query"
+
+# Or add Python Scripts to PATH (Windows)
+# Add C:\Users\YourName\AppData\Roaming\Python\Python310\Scripts to PATH
+
+# Or use pipx for isolated installation
+pipx install webintel
+```
+
+### �📦 Package Information
 - **PyPI Package**: [webintel](https://pypi.org/project/webintel/2.0.3/)
 - **Import Name**: `webintel` (use `from webintel import DataProcessor`)
 - **CLI Command**: `webintel` (after installation)
@@ -95,8 +118,11 @@ set GEMINI_API_KEY=your-api-key-here
 # Standard installation
 pip install webintel
 
-# Global installation (recommended for CLI usage)
-pip install --global webintel
+# Global installation (Windows - Run as Administrator)
+pip install webintel
+
+# Global installation (Linux/macOS)
+sudo pip install webintel
 
 # Or using pipx (isolated environment)
 pipx install webintel
@@ -333,7 +359,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 | Resource | Link |
 |----------|------|
-| 📦 **Install** | `pip install webintel` or `pip install --global webintel` |
+| 📦 **Install** | `pip install webintel` or `sudo pip install webintel` |
 | 📚 **Documentation** | [GitHub README](https://github.com/JustM3Sunny/webintel#readme) |
 | 🐛 **Bug Reports** | [GitHub Issues](https://github.com/JustM3Sunny/webintel/issues) |
 | 💡 **Feature Requests** | [GitHub Discussions](https://github.com/JustM3Sunny/webintel/discussions) |
