@@ -10,7 +10,7 @@ import os
 import sys
 from pathlib import Path
 
-__version__ = "2.0.1"
+__version__ = "2.0.2"
 __author__ = "JustM3Sunny"
 __email__ = "justm3sunny@gmail.com"
 __description__ = "AI-Powered Web Intelligence System - Real-time research and intelligent insights"

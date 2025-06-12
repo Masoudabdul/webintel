@@ -23,7 +23,7 @@ from .processor import DataProcessor
 console = Console()
 
 @click.group()
-@click.version_option(version="2.0.1")
+@click.version_option(version="2.0.2")
 @click.option('--config', '-c', type=click.Path(), help='Configuration file path')
 @click.option('--verbose', '-v', is_flag=True, help='Enable verbose logging')
 @click.pass_context
@@ -342,16 +342,16 @@ def show(ctx):
     console.print_json(data=config_dict)
 
 def main():
-    """Main entry point"""
+    """Main entry point for console script"""
     try:
         # Auto-setup WebIntel on first run
         try:
-            from . import setup_webintel
+            from webintel import setup_webintel
             setup_webintel()
         except ImportError:
             pass
 
-        cli()
+        cli(obj={})
     except KeyboardInterrupt:
         console.print("\n[yellow]Interrupted by user[/yellow]")
         sys.exit(1)

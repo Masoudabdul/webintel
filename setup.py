@@ -24,7 +24,7 @@ if requirements_path.exists():
 
 setup(
     name="webintel",
-    version="2.0.1",
+    version="2.0.2",
     author="JustM3Sunny",
     author_email="justm3sunny@gmail.com",
     description="🤖 AI-Powered Web Intelligence System - Real-time research, comprehensive analysis, and intelligent insights using Google Gemini 2.0 Flash",
@@ -79,12 +79,7 @@ setup(
             "responses>=0.22.0",
         ]
     },
-    entry_points={
-        "console_scripts": [
-            "webintel=webintel.cli:main",
-            "wi=webintel.cli:main",  # Short alias
-        ],
-    },
+    # Entry points are now defined in pyproject.toml
     keywords=[
         "ai", "artificial intelligence", "web intelligence", "research", "automation",
         "gemini", "google ai", "web scraping", "data analysis", "nlp", "search engine",

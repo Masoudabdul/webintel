@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "webintel"
-version = "2.0.1"
+version = "2.0.2"
 authors = [
     {name = "JustM3Sunny", email = "justm3sunny@gmail.com"},
 ]
@@ -83,6 +83,10 @@ test = [
 ]
 
 [project.scripts]
+webintel = "webintel.cli:main"
+wi = "webintel.cli:main"
+
+[project.entry-points."console_scripts"]
 webintel = "webintel.cli:main"
 wi = "webintel.cli:main"
 
