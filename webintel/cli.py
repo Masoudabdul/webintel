@@ -23,7 +23,7 @@ from .processor import DataProcessor
 console = Console()
 
 @click.group()
-@click.version_option(version="2.0.2")
+@click.version_option(version="2.0.3")
 @click.option('--config', '-c', type=click.Path(), help='Configuration file path')
 @click.option('--verbose', '-v', is_flag=True, help='Enable verbose logging')
 @click.pass_context

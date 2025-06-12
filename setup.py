@@ -24,7 +24,7 @@ if requirements_path.exists():
 
 setup(
     name="webintel",
-    version="2.0.2",
+    version="2.0.3",
     author="JustM3Sunny",
     author_email="justm3sunny@gmail.com",
     description="🤖 AI-Powered Web Intelligence System - Real-time research, comprehensive analysis, and intelligent insights using Google Gemini 2.0 Flash",
