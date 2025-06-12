@@ -1,0 +1,311 @@
+Metadata-Version: 2.4
+Name: webintel
+Version: 1.0.0
+Summary: High-Performance Web Information Retrieval CLI Tool powered by Google Gemini 2.0 Flash
+Home-page: https://github.com/webintel/webintel
+Author: WebIntel Development Team
+Author-email: dev@webintel.ai
+Project-URL: Bug Reports, https://github.com/webintel/webintel/issues
+Project-URL: Source, https://github.com/webintel/webintel
+Project-URL: Documentation, https://webintel.readthedocs.io/
+Keywords: web scraping,information retrieval,ai,gemini,cli,research,data collection,web intelligence
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Internet :: WWW/HTTP :: Indexing/Search
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Text Processing :: Markup :: HTML
+Classifier: Topic :: Utilities
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: aiohttp>=3.9.0
+Requires-Dist: asyncio-throttle>=1.0.2
+Requires-Dist: beautifulsoup4>=4.12.0
+Requires-Dist: click>=8.1.0
+Requires-Dist: google-generativeai>=0.8.0
+Requires-Dist: lxml>=4.9.0
+Requires-Dist: pydantic>=2.5.0
+Requires-Dist: PyYAML>=6.0
+Requires-Dist: rich>=13.7.0
+Requires-Dist: tenacity>=8.2.0
+Requires-Dist: urllib3>=2.1.0
+Requires-Dist: fake-useragent>=1.4.0
+Requires-Dist: aiofiles>=23.2.0
+Requires-Dist: python-dotenv>=1.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.21.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Requires-Dist: flake8>=6.0.0; extra == "dev"
+Requires-Dist: mypy>=1.0.0; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx>=5.0.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme>=1.2.0; extra == "docs"
+Requires-Dist: myst-parser>=0.18.0; extra == "docs"
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: project-url
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# WebIntel - High-Performance Web Information Retrieval CLI Tool
+
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Powered by Gemini 2.0 Flash](https://img.shields.io/badge/Powered%20by-Gemini%202.0%20Flash-green.svg)](https://ai.google.dev/)
+
+WebIntel is a cutting-edge command-line tool that performs comprehensive web information retrieval using Google Gemini 2.0 Flash AI. It combines high-performance web scraping with intelligent AI analysis to deliver real-time, synthesized information on any topic.
+
+## 🚀 Features
+
+### Core Capabilities
+- **Multi-threaded Web Scraping**: Concurrent processing for maximum speed
+- **AI-Powered Analysis**: Google Gemini 2.0 Flash integration for intelligent content analysis
+- **Real-time Results**: Live streaming of results as they're processed
+- **Comprehensive Synthesis**: AI-driven information synthesis from multiple sources
+- **Multiple Output Formats**: Rich terminal output, JSON, Markdown, and plain text
+
+### Performance Features
+- **Concurrent Processing**: Up to 50 simultaneous web requests
+- **Smart Rate Limiting**: Automatic throttling to respect website limits
+- **Content Deduplication**: Intelligent duplicate detection and filtering
+- **Relevance Scoring**: AI-based relevance assessment for source prioritization
+- **Caching System**: In-memory caching for improved performance
+
+### Advanced Features
+- **User Agent Rotation**: Automatic user agent switching for better scraping success
+- **Content Extraction**: Intelligent main content extraction from web pages
+- **Metadata Analysis**: Comprehensive page metadata extraction
+- **Error Handling**: Robust retry mechanisms and error recovery
+- **Configuration Management**: Flexible YAML-based configuration system
+
+## 📦 Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- Google Gemini API key ([Get one here](https://ai.google.dev/))
+
+### Install from Source
+```bash
+git clone https://github.com/webintel/webintel.git
+cd webintel
+pip install -r requirements.txt
+pip install -e .
+```
+
+### Install via pip (when published)
+```bash
+pip install webintel
+```
+
+## 🔧 Configuration
+
+### Set up your Gemini API Key
+
+**Option 1: Environment Variable**
+```bash
+export GEMINI_API_KEY="your_api_key_here"
+```
+
+**Option 2: CLI Command**
+```bash
+webintel config set-api-key YOUR_API_KEY
+```
+
+**Option 3: Configuration File**
+Create `~/.webintel/config.yaml`:
+```yaml
+gemini:
+  api_key: "your_api_key_here"
+  model_name: "gemini-2.0-flash"
+  max_tokens: 8192
+  temperature: 0.7
+
+scraping:
+  max_concurrent_requests: 10
+  request_timeout: 30
+  retry_attempts: 3
+  delay_between_requests: 0.5
+
+output:
+  format: "rich"
+  save_to_file: false
+  include_sources: true
+```
+
+## 🎯 Usage
+
+### Basic Search
+```bash
+webintel search "artificial intelligence trends 2024"
+```
+
+### Advanced Options
+```bash
+# Specify maximum results
+webintel search "climate change solutions" --max-results 30
+
+# Change output format
+webintel search "python web scraping" --format json
+
+# Save results to file
+webintel search "machine learning algorithms" --save --output-dir ./results
+
+# Combine options
+webintel search "blockchain technology" --max-results 25 --format markdown --save
+```
+
+### Configuration Management
+```bash
+# Show current configuration
+webintel config show
+
+# Set API key
+webintel config set-api-key YOUR_KEY
+```
+
+## 📊 Output Formats
+
+### Rich Terminal Output (Default)
+Beautiful, colored terminal output with:
+- Executive summary panel
+- Key findings list
+- Recommendations
+- Detailed analysis
+- Sources table with relevance scores
+
+### JSON Output
+```bash
+webintel search "topic" --format json
+```
+Structured JSON output perfect for integration with other tools.
+
+### Markdown Output
+```bash
+webintel search "topic" --format markdown
+```
+Clean markdown format suitable for documentation.
+
+### Plain Text Output
+```bash
+webintel search "topic" --format plain
+```
+Simple text output for basic terminals or scripting.
+
+## 🏗️ Architecture
+
+WebIntel follows a modular architecture:
+
+```
+webintel/
+├── cli.py          # Command-line interface
+├── config.py       # Configuration management
+├── scraper.py      # Web scraping engine
+├── ai_engine.py    # Gemini AI integration
+├── processor.py    # Data processing pipeline
+└── utils.py        # Utility functions
+```
+
+### Processing Pipeline
+1. **Query Processing**: Parse and validate user query
+2. **Web Scraping**: Multi-threaded scraping of search results
+3. **Content Extraction**: Intelligent content extraction from pages
+4. **AI Analysis**: Individual source analysis using Gemini 2.0 Flash
+5. **Relevance Filtering**: Filter sources by AI-determined relevance
+6. **Information Synthesis**: AI-powered synthesis of all relevant sources
+7. **Result Formatting**: Format and display results in chosen format
+
+## 🔧 Advanced Configuration
+
+### Scraping Configuration
+```yaml
+scraping:
+  max_concurrent_requests: 10    # Max simultaneous requests
+  request_timeout: 30           # Request timeout in seconds
+  retry_attempts: 3             # Number of retry attempts
+  delay_between_requests: 0.5   # Delay between requests
+  max_pages_per_site: 5         # Max pages per domain
+  user_agent_rotation: true     # Enable user agent rotation
+```
+
+### AI Configuration
+```yaml
+gemini:
+  model_name: "gemini-2.0-flash"  # Gemini model to use
+  max_tokens: 8192                # Maximum tokens per request
+  temperature: 0.7                # Response creativity (0.0-2.0)
+  top_p: 0.9                     # Nucleus sampling parameter
+  top_k: 40                      # Top-k sampling parameter
+```
+
+### Output Configuration
+```yaml
+output:
+  format: "rich"                    # Default output format
+  save_to_file: false              # Auto-save results
+  output_directory: "./results"    # Save directory
+  include_sources: true            # Include source details
+  max_summary_length: 2000         # Max summary length
+```
+
+## 🚀 Performance Tips
+
+1. **Optimize Concurrent Requests**: Adjust `max_concurrent_requests` based on your network
+2. **Use Caching**: Results are cached in memory for repeated queries
+3. **Limit Results**: Use `--max-results` to control processing time
+4. **Save Results**: Use `--save` to avoid re-processing the same query
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Development Setup
+```bash
+git clone https://github.com/webintel/webintel.git
+cd webintel
+pip install -e ".[dev]"
+```
+
+### Running Tests
+```bash
+pytest tests/
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Google Gemini 2.0 Flash**: Powering the AI analysis and synthesis
+- **aiohttp**: High-performance async HTTP client
+- **BeautifulSoup**: HTML parsing and content extraction
+- **Rich**: Beautiful terminal output formatting
+- **Click**: Command-line interface framework
+
+## 📞 Support
+
+- **Documentation**: [https://webintel.readthedocs.io/](https://webintel.readthedocs.io/)
+- **Issues**: [GitHub Issues](https://github.com/webintel/webintel/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/webintel/webintel/discussions)
+
+---
+
+**WebIntel** - Transforming web information retrieval with AI-powered intelligence.

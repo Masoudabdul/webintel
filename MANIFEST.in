@@ -1,0 +1,49 @@
+# Include the README and license
+include README.md
+include LICENSE
+include CHANGELOG.md
+
+# Include documentation
+recursive-include docs *.html *.css *.js *.png *.jpg *.gif *.ico *.svg
+include docs/index.html
+include docs/installation.html
+
+# Include configuration files
+include pyproject.toml
+include setup.py
+include requirements.txt
+
+# Include package data
+recursive-include webintel *.json *.yaml *.yml *.txt
+
+# Exclude development and build files
+exclude .gitignore
+exclude .pre-commit-config.yaml
+exclude tox.ini
+exclude Makefile
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * *.orig
+recursive-exclude * *.rej
+recursive-exclude * .DS_Store
+recursive-exclude * .coverage
+recursive-exclude * .pytest_cache
+recursive-exclude * .mypy_cache
+recursive-exclude * .tox
+recursive-exclude * .venv
+recursive-exclude * venv
+recursive-exclude * env
+recursive-exclude * build
+recursive-exclude * dist
+recursive-exclude * *.egg-info
+
+# Exclude test files
+recursive-exclude tests *
+exclude tests.py
+exclude test_*.py
+exclude *_test.py
+
+# Exclude development scripts
+exclude scripts/*
+exclude tools/*
+exclude .github/*

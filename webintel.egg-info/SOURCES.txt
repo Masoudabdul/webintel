@@ -1,0 +1,16 @@
+README.md
+setup.py
+webintel/__init__.py
+webintel/ai_engine.py
+webintel/cli.py
+webintel/config.py
+webintel/processor.py
+webintel/scraper.py
+webintel/utils.py
+webintel.egg-info/PKG-INFO
+webintel.egg-info/SOURCES.txt
+webintel.egg-info/dependency_links.txt
+webintel.egg-info/entry_points.txt
+webintel.egg-info/not-zip-safe
+webintel.egg-info/requires.txt
+webintel.egg-info/top_level.txt
