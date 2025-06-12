@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "webintel"
 version = "2.0.0"
 authors = [
-    {name = "WebIntel Development Team", email = "dev@webintel.ai"},
+    {name = "Sunny", email = "justaskcoding76@gmail.com"},
 ]
 description = "🤖 AI-Powered Web Intelligence System - Real-time research, comprehensive analysis, and intelligent insights using Google Gemini 2.0 Flash"
 readme = "README.md"

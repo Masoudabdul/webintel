@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+docs/
 # Distribution / packaging
 .Python
 build/
@@ -70,6 +70,9 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+
+# Exclude docs directory (separate website)
+docs/
 
 # PyBuilder
 target/
@@ -167,3 +170,6 @@ testing/
 deploy.py
 deployment/
 scripts/
+
+# Documentation website (separate deployment)
+docs/
