@@ -7,9 +7,9 @@ web scraping and data collection with multi-threaded processing for
 real-time results.
 """
 
-__version__ = "1.0.0"
-__author__ = "WebIntel Development Team"
-__description__ = "High-Performance Web Information Retrieval CLI Tool"
+__version__ = "2.0.0"
+__author__ = "JustM3Sunny"
+__description__ = "AI-Powered Web Intelligence System - Real-time research and intelligent insights"
 
 from .cli import main
 from .config import Config
