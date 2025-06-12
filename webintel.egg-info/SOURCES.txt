@@ -1,11 +1,15 @@
+MANIFEST.in
 README.md
+pyproject.toml
+requirements.txt
 setup.py
+docs/index.html
 webintel/__init__.py
+webintel/advanced_search_engine.py
 webintel/ai_engine.py
 webintel/cli.py
 webintel/config.py
 webintel/processor.py
-webintel/scraper.py
 webintel/utils.py
 webintel.egg-info/PKG-INFO
 webintel.egg-info/SOURCES.txt

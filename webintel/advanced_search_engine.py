@@ -112,48 +112,8 @@ class AdvancedSearchEngine:
             "confidence": self._calculate_confidence(ranked_results)
         }
     
-    def _generate_smart_queries(self, query: str) -> List[str]:
-        """Generate intelligent query variations"""
-        base_query = query.strip()
-        variations = [base_query]
-        
-        # Smart query expansion based on query type
-        words = base_query.lower().split()
-        
-        # Technical queries
-        if any(word in words for word in ['programming', 'code', 'software', 'development', 'api', 'framework']):
-            variations.extend([
-                f"{base_query} tutorial documentation",
-                f"{base_query} guide examples",
-                f"{base_query} best practices",
-                f"how to use {base_query}"
-            ])
-        
-        # News/current events
-        elif any(word in words for word in ['news', 'latest', 'recent', 'today', 'current']):
-            variations.extend([
-                f"{base_query} latest news",
-                f"{base_query} recent updates",
-                f"{base_query} breaking news"
-            ])
-        
-        # Educational queries
-        elif any(word in words for word in ['what', 'how', 'why', 'explain', 'definition']):
-            variations.extend([
-                f"{base_query} explained",
-                f"{base_query} definition",
-                f"{base_query} overview"
-            ])
-        
-        # General enhancement
-        else:
-            variations.extend([
-                f"{base_query} information",
-                f"{base_query} overview",
-                f"about {base_query}"
-            ])
-        
-        return variations[:4]  # Limit to top 4 variations
+    # REMOVED: Smart query generation that modifies user queries
+    # WebIntel now searches EXACTLY what the user asks for
 
     async def _fast_multi_engine_search(self, query: str, max_results: int) -> List[str]:
         """Real web search using multiple engines - NO PREDEFINED URLs"""
@@ -195,27 +155,19 @@ class AdvancedSearchEngine:
         return unique_urls
 
     async def _alternative_search(self, query: str, max_results: int) -> List[str]:
-        """Alternative search method when primary engines fail"""
+        """Alternative search method - try exact query only"""
 
-        # Try different search approaches
+        # Only try the exact query with different engines
         alternative_urls = []
 
-        # Try with modified query
-        modified_queries = [
-            f'"{query}"',  # Exact phrase
-            f"{query} site:github.com",  # GitHub specific
-            f"{query} tutorial",  # Add tutorial
-            f"{query} guide",  # Add guide
-        ]
-
-        for mod_query in modified_queries[:2]:  # Try first 2
-            try:
-                bing_results = await self._search_bing(mod_query, 5)
-                if bing_results:
-                    alternative_urls.extend(bing_results)
-                    break
-            except Exception:
-                continue
+        # Try exact query with different engines one more time
+        try:
+            # Try DuckDuckGo again with longer timeout
+            ddg_results = await self._search_duckduckgo(query, max_results)
+            if ddg_results:
+                alternative_urls.extend(ddg_results)
+        except Exception:
+            pass
 
         return alternative_urls[:max_results]
 
@@ -294,82 +246,17 @@ class AdvancedSearchEngine:
 
         logger.info(f"Successfully extracted {len(search_results)} results")
 
-        # If no content extracted, create basic results from URLs
-        if not search_results and urls:
-            search_results = self._create_basic_results(urls[:5], query)
+        # ONLY return real extracted content - NO FALLBACKS
+        if not search_results:
+            logger.error(f"CRITICAL: No real content extracted from {len(urls)} URLs for query")
+            logger.error("This means WebIntel failed to retrieve any real web content")
+            return []
 
-        # GUARANTEE: Always return at least some results if URLs were found
-        if not search_results and urls:
-            search_results = self._create_guaranteed_results(urls[:3], query)
+        logger.info(f"SUCCESS: Extracted {len(search_results)} real web results")
+        return search_results[:15]  # Return top 15 results
 
-        return search_results[:10]  # Return top 10 results
-
-    def _create_basic_results(self, urls: List[str], query: str) -> List[SearchResult]:
-        """Create basic results when content extraction fails"""
-        results = []
-        for i, url in enumerate(urls):
-            try:
-                domain = urlparse(url).netloc
-                title = f"Search Result {i+1} - {domain}"
-                content = f"Information about '{query}' found at {domain}. Visit the link for more details."
-
-                result = SearchResult(
-                    title=title,
-                    url=url,
-                    content=content,
-                    snippet=content,
-                    domain=domain,
-                    score=0.5 - (i * 0.1),  # Decreasing score
-                    raw_content=content,
-                    timestamp=time.time()
-                )
-                results.append(result)
-            except Exception as e:
-                logger.error(f"Error creating basic result for {url}: {e}")
-                continue
-
-        return results
-
-    def _create_guaranteed_results(self, urls: List[str], query: str) -> List[SearchResult]:
-        """Create guaranteed results - this will ALWAYS work"""
-        results = []
-        for i, url in enumerate(urls):
-            try:
-                domain = urlparse(url).netloc
-
-                # Create meaningful titles based on domain
-                if 'github.com' in domain:
-                    title = f"GitHub Repository - {query}"
-                elif 'stackoverflow.com' in domain:
-                    title = f"Stack Overflow Discussion - {query}"
-                elif 'python.org' in domain:
-                    title = f"Python Documentation - {query}"
-                elif 'medium.com' in domain:
-                    title = f"Medium Article - {query}"
-                else:
-                    title = f"{domain.replace('www.', '').title()} - {query}"
-
-                # Create meaningful content
-                content = f"This resource about '{query}' is available at {domain}. "
-                content += f"The page contains relevant information related to your search query. "
-                content += f"Visit the link to access the full content and detailed information about {query}."
-
-                result = SearchResult(
-                    title=title,
-                    url=url,
-                    content=content,
-                    snippet=content[:150] + "...",
-                    domain=domain,
-                    score=0.8 - (i * 0.1),  # High scores
-                    raw_content=content,
-                    timestamp=time.time()
-                )
-                results.append(result)
-            except Exception as e:
-                print(f"Error creating guaranteed result for {url}: {e}")
-                continue
-
-        return results
+    # REMOVED: All predefined content generation methods
+    # WebIntel now ONLY returns real web content extracted from actual websites
 
     def _quick_ranking(self, results: List[SearchResult], query: str) -> List[SearchResult]:
         """Quick ranking system"""
@@ -614,6 +501,34 @@ class AdvancedSearchEngine:
 
     # REMOVED: Unused URL extractors (Yahoo, Yandex, Startpage, Searx, Brave)
 
+    def _is_meaningful_content(self, content: str, query: str) -> bool:
+        """Check if content is meaningful and not just boilerplate"""
+        if not content or len(content.strip()) < 150:
+            return False
+
+        # Check for common boilerplate patterns
+        boilerplate_patterns = [
+            'cookies', 'privacy policy', 'terms of service', 'subscribe',
+            'newsletter', 'advertisement', 'loading...', 'javascript required',
+            'enable javascript', 'page not found', '404', 'error'
+        ]
+
+        content_lower = content.lower()
+        boilerplate_count = sum(1 for pattern in boilerplate_patterns if pattern in content_lower)
+
+        # If too much boilerplate, reject
+        if boilerplate_count > 3:
+            return False
+
+        # Check if content has some relation to query
+        query_words = query.lower().split()
+        content_words = content_lower.split()
+
+        # At least one query word should appear in content
+        query_matches = sum(1 for word in query_words if word in content_words)
+
+        return query_matches > 0 or len(content.strip()) > 500  # Long content is usually meaningful
+
     def _is_valid_result_url(self, url: str) -> bool:
         """Check if URL is valid for results - more permissive"""
         if not url or len(url) < 10:
@@ -652,28 +567,40 @@ class AdvancedSearchEngine:
         return True
 
     async def _parallel_content_extraction(self, urls: List[str], query: str) -> List[SearchResult]:
-        """Extract content from URLs in parallel"""
-        semaphore = asyncio.Semaphore(20)
+        """Extract content from URLs in parallel - AGGRESSIVE APPROACH"""
+        semaphore = asyncio.Semaphore(25)  # Increased concurrency
 
         async def extract_single(url):
             async with semaphore:
-                return await self._extract_content_fast(url, query)
+                # Try multiple times for better success rate
+                for attempt in range(2):
+                    try:
+                        result = await self._extract_content_fast(url, query)
+                        if result and result.content and len(result.content.strip()) > 100:
+                            return result
+                    except Exception:
+                        if attempt == 0:
+                            await asyncio.sleep(0.5)  # Brief delay before retry
+                        continue
+                return None
 
         tasks = [extract_single(url) for url in urls]
 
         try:
             results = await asyncio.wait_for(
                 asyncio.gather(*tasks, return_exceptions=True),
-                timeout=10
+                timeout=15  # Increased timeout for better results
             )
         except asyncio.TimeoutError:
+            logger.warning("Content extraction timed out")
             results = []
 
         search_results = []
         for result in results:
-            if isinstance(result, SearchResult):
+            if isinstance(result, SearchResult) and result.content and len(result.content.strip()) > 100:
                 search_results.append(result)
 
+        logger.info(f"Successfully extracted {len(search_results)} valid results from {len(urls)} URLs")
         return search_results
 
     async def _extract_content_fast(self, url: str, query: str) -> Optional[SearchResult]:
@@ -686,27 +613,33 @@ class AdvancedSearchEngine:
                 'Connection': 'keep-alive'
             }
 
-            async with self.session.get(url, headers=headers, timeout=6) as response:
+            async with self.session.get(url, headers=headers, timeout=8) as response:
                 if response.status != 200:
                     logger.warning(f"HTTP {response.status} for {url}")
                     return None
 
                 html = await response.text()
-                if not html or len(html) < 100:
+                if not html or len(html) < 200:
                     logger.warning(f"Empty or too short HTML for {url}")
                     return None
 
                 soup = BeautifulSoup(html, 'lxml')
 
-                # Remove unwanted elements
-                for element in soup(['script', 'style', 'nav', 'header', 'footer', 'aside']):
+                # Remove unwanted elements more aggressively
+                for element in soup(['script', 'style', 'nav', 'header', 'footer', 'aside', 'iframe', 'noscript']):
                     element.decompose()
 
                 title = self._extract_title_fast(soup)
                 content = self._extract_content_fast_method(soup)
 
-                if len(content) < 50:
+                # Be more strict about content quality
+                if len(content.strip()) < 150:
                     logger.warning(f"Content too short for {url}: {len(content)} chars")
+                    return None
+
+                # Ensure content is meaningful (not just navigation/boilerplate)
+                if not self._is_meaningful_content(content, query):
+                    logger.warning(f"Content not meaningful for {url}")
                     return None
 
                 snippet = self._generate_snippet(content, query)

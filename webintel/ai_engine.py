@@ -438,13 +438,15 @@ SOURCE_SUMMARY:
             )
 
             if not response.text:
-                return self._generate_fallback_comprehensive_response(analyzed_contents, query)
+                # NO FALLBACK - Return error if no real AI response
+                raise Exception("AI model returned empty response")
 
             return self._parse_comprehensive_response(response.text)
 
         except Exception as e:
             logger.error(f"Error generating comprehensive response: {e}")
-            return self._generate_fallback_comprehensive_response(analyzed_contents, query)
+            # NO FALLBACK - Raise error instead of generating fake content
+            raise Exception(f"Failed to generate AI response: {e}")
 
     def _parse_comprehensive_response(self, response_text: str) -> Dict[str, Any]:
         """Parse comprehensive AI response"""
@@ -495,33 +497,5 @@ SOURCE_SUMMARY:
                 "source_summary": ""
             }
 
-    def _generate_fallback_comprehensive_response(self, analyzed_contents: List[Dict[str, Any]],
-                                                query: str) -> Dict[str, Any]:
-        """Generate fallback comprehensive response"""
-        if not analyzed_contents:
-            return {
-                "comprehensive_answer": f"I couldn't find specific information about '{query}' from web sources.",
-                "key_insights": [],
-                "additional_info": "Please try a different search query or check back later.",
-                "source_summary": "No sources available"
-            }
-
-        # Extract key information from sources
-        all_key_points = []
-        source_count = len(analyzed_contents)
-
-        for content in analyzed_contents:
-            all_key_points.extend(content.get('key_points', []))
-
-        answer = f"Based on {source_count} web sources, here's what I found about '{query}': "
-        if all_key_points:
-            answer += " ".join(all_key_points[:3])
-        else:
-            answer += "The sources contain relevant information but require further analysis."
-
-        return {
-            "comprehensive_answer": answer,
-            "key_insights": all_key_points[:3],
-            "additional_info": f"Information gathered from {source_count} web sources.",
-            "source_summary": f"Analyzed {source_count} sources with varying relevance levels"
-        }
+    # REMOVED: No more fallback responses
+    # WebIntel now only returns real AI analysis of real web content

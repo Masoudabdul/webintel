@@ -86,12 +86,12 @@ webintel = "webintel.cli:main"
 wi = "webintel.cli:main"
 
 [project.urls]
-Homepage = "https://webintel.github.io/webintel/"
-Documentation = "https://webintel.github.io/webintel/"
-Repository = "https://github.com/webintel/webintel"
-"Bug Reports" = "https://github.com/webintel/webintel/issues"
-"Feature Requests" = "https://github.com/webintel/webintel/discussions"
-Changelog = "https://github.com/webintel/webintel/releases"
+Homepage = "https://justm3sunny.github.io/webintel/"
+Documentation = "https://justm3sunny.github.io/webintel/"
+Repository = "https://github.com/JustM3Sunny/webintel"
+"Bug Reports" = "https://github.com/JustM3Sunny/webintel/issues"
+"Feature Requests" = "https://github.com/JustM3Sunny/webintel/discussions"
+Changelog = "https://github.com/JustM3Sunny/webintel/releases"
 PyPI = "https://pypi.org/project/webintel/"
 
 [tool.setuptools]
