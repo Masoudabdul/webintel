@@ -1,3 +1,0 @@
-[console_scripts]
-webintel = webintel.cli:main
-wi = webintel.cli:main

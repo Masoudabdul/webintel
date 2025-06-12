@@ -173,3 +173,6 @@ scripts/
 
 # Documentation website (separate deployment)
 docs/
+
+# Build artifacts
+*.egg-info/
