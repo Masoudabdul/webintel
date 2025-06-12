@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-docs/
+
 # Distribution / packaging
 .Python
 build/
@@ -71,8 +71,8 @@ instance/
 # Sphinx documentation
 docs/_build/
 
-# Exclude docs directory (separate website)
-docs/
+# Sphinx build directory only
+docs/_build/
 
 # PyBuilder
 target/
@@ -171,8 +171,14 @@ deploy.py
 deployment/
 scripts/
 
-# Documentation website (separate deployment)
-docs/
+# Documentation build artifacts only
+docs/_build/
 
 # Build artifacts
 *.egg-info/
+build/
+dist/
+
+# Extra markdown files
+PROJECT_OVERVIEW.md
+CONTRIBUTING.md

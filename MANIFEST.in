@@ -7,6 +7,8 @@ include CHANGELOG.md
 recursive-include docs *.html *.css *.js *.png *.jpg *.gif *.ico *.svg
 include docs/index.html
 include docs/installation.html
+include docs/api-reference.html
+include docs/examples.html
 
 # Include configuration files
 include pyproject.toml

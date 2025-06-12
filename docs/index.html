@@ -1,0 +1,1164 @@
+Line wrap
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebIntel - AI-Powered Web Intelligence System</title>
+<meta name="description" content="WebIntel is a powerful AI-driven web intelligence system that provides real-time web research, comprehensive analysis, and intelligent insights using Google Gemini 2.0 Flash.">
+<meta name="keywords" content="AI, web intelligence, research, automation, Gemini AI, web scraping, data analysis">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Custom Tailwind Config -->
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: {
+50: '#eff6ff',
+100: '#dbeafe',
+500: '#3b82f6',
+600: '#2563eb',
+700: '#1d4ed8',
+900: '#1e3a8a'
+},
+accent: {
+500: '#10b981',
+600: '#059669'
+}
+},
+fontFamily: {
+'sans': ['Inter', 'system-ui', 'sans-serif'],
+'mono': ['JetBrains Mono', 'monospace']
+}
+}
+}
+}
+</script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Prism.js for syntax highlighting -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<style>
+.gradient-bg {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.glass-effect {
+backdrop-filter: blur(10px);
+background: rgba(255, 255, 255, 0.1);
+border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.code-block {
+background: #1a1a1a;
+border-radius: 12px;
+overflow: hidden;
+}
+.feature-card {
+transition: all 0.3s ease;
+border: 1px solid rgba(59, 130, 246, 0.1);
+}
+.feature-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+border-color: rgba(59, 130, 246, 0.3);
+}
+.nav-link {
+position: relative;
+transition: all 0.3s ease;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+bottom: -2px;
+left: 0;
+width: 0;
+height: 2px;
+background: #3b82f6;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.hero-animation {
+animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+0%, 100% { transform: translateY(0px); }
+50% { transform: translateY(-20px); }
+}
+.typing-animation {
+border-right: 2px solid #3b82f6;
+animation: blink 1s infinite;
+}
+@keyframes blink {
+0%, 50% { border-color: transparent; }
+51%, 100% { border-color: #3b82f6; }
+}
+</style>
+</head>
+<body class="bg-gray-50 font-sans">
+<!-- Navigation -->
+<nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<!-- Logo -->
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
+<i class="fas fa-brain text-white text-lg"></i>
+</div>
+<div>
+<h1 class="text-xl font-bold text-gray-900">WebIntel</h1>
+<p class="text-xs text-gray-500">AI Web Intelligence</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="hidden md:flex items-center space-x-8">
+<a href="#home" class="nav-link text-gray-700 hover:text-primary-600 font-medium">Home</a>
+<a href="#features" class="nav-link text-gray-700 hover:text-primary-600 font-medium">Features</a>
+<a href="installation.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium">Installation</a>
+<a href="examples.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium">Examples</a>
+<a href="api-reference.html" class="nav-link text-gray-700 hover:text-primary-600 font-medium">API Reference</a>
+<a href="#community" class="nav-link text-gray-700 hover:text-primary-600 font-medium">Community</a>
+</div>
+<!-- CTA Buttons -->
+<div class="flex items-center space-x-4">
+<a href="https://github.com/JustM3Sunny/webintel" class="text-gray-600 hover:text-gray-900 transition-colors">
+<i class="fab fa-github text-xl"></i>
+</a>
+<a href="https://pypi.org/project/webintel/2.0.0/" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+Get Started
+</a>
+</div>
+<!-- Mobile menu button -->
+<div class="md:hidden">
+<button class="text-gray-600 hover:text-gray-900">
+<i class="fas fa-bars text-xl"></i>
+</button>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-accent-50 py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<!-- Hero Content -->
+<div class="space-y-8">
+<div class="space-y-4">
+<div class="inline-flex items-center px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">
+<i class="fas fa-rocket mr-2"></i>
+Powered by Google Gemini 2.0 Flash
+</div>
+<h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+AI-Powered
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-500">
+Web Intelligence
+</span>
+</h1>
+<p class="text-xl text-gray-600 leading-relaxed">
+Transform any query into comprehensive insights with real-time web research,
+AI analysis, and intelligent data synthesis. Get answers in seconds, not hours.
+</p>
+</div>
+<!-- Quick Stats -->
+<div class="grid grid-cols-3 gap-6">
+<div class="text-center">
+<div class="text-2xl font-bold text-primary-600">15-20s</div>
+<div class="text-sm text-gray-500">Response Time</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-primary-600">90%+</div>
+<div class="text-sm text-gray-500">Accuracy Rate</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-primary-600">Real-time</div>
+<div class="text-sm text-gray-500">Web Data</div>
+</div>
+</div>
+<!-- CTA Buttons -->
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+<i class="fas fa-download mr-2"></i>
+Install WebIntel
+</button>
+<button class="border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all">
+<i class="fas fa-play mr-2"></i>
+View Demo
+</button>
+</div>
+</div>
+<!-- Hero Visual -->
+<div class="relative">
+<div class="hero-animation">
+<div class="code-block p-6 shadow-2xl">
+<div class="flex items-center justify-between mb-4">
+<div class="flex space-x-2">
+<div class="w-3 h-3 bg-red-500 rounded-full"></div>
+<div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+</div>
+<span class="text-gray-400 text-sm">terminal</span>
+</div>
+<div class="font-mono text-sm">
+<div class="text-green-400">$ pip install webintel</div>
+<div class="text-gray-400 mt-2">Installing WebIntel...</div>
+<div class="text-green-400 mt-1">✓ Successfully installed</div>
+<div class="text-blue-400 mt-4">$ webintel search "AI trends 2024"</div>
+<div class="text-gray-300 mt-2">🔍 Searching across web...</div>
+<div class="text-gray-300">🤖 AI analysis in progress...</div>
+<div class="text-green-400 mt-1">✅ Found 5 sources in 16.2s</div>
+<div class="text-yellow-400 typing-animation mt-2">Generating insights...</div>
+</div>
+</div>
+</div>
+<!-- Floating Elements -->
+<div class="absolute -top-4 -right-4 w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center shadow-lg">
+<i class="fas fa-brain text-primary-600 text-2xl"></i>
+</div>
+<div class="absolute -bottom-4 -left-4 w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center shadow-lg">
+<i class="fas fa-search text-accent-600 text-xl"></i>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Pattern -->
+<div class="absolute inset-0 opacity-5">
+<div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, #3b82f6 1px, transparent 0); background-size: 20px 20px;"></div>
+</div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">
+Powerful Features for Modern Web Intelligence
+</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">
+WebIntel combines cutting-edge AI with real-time web research to deliver
+comprehensive insights and actionable intelligence.
+</p>
+</div>
+
+<!-- Features Grid -->
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Feature 1: Real-time Web Research -->
+<div class="feature-card bg-white p-8 rounded-2xl shadow-lg">
+<div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6">
+<i class="fas fa-globe text-primary-600 text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Real-time Web Research</h3>
+<p class="text-gray-600 mb-4">
+Search across multiple engines (Google, Bing, DuckDuckGo) simultaneously
+for comprehensive and up-to-date information.
+</p>
+<ul class="space-y-2 text-sm text-gray-500">
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Multi-engine parallel search</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Real-time data extraction</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>No predefined sources</li>
+</ul>
+</div>
+
+<!-- Feature 2: AI-Powered Analysis -->
+<div class="feature-card bg-white p-8 rounded-2xl shadow-lg">
+<div class="w-14 h-14 bg-accent-100 rounded-xl flex items-center justify-center mb-6">
+<i class="fas fa-brain text-accent-600 text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">AI-Powered Analysis</h3>
+<p class="text-gray-600 mb-4">
+Leverage Google Gemini 2.0 Flash for intelligent content analysis,
+synthesis, and insight generation.
+</p>
+<ul class="space-y-2 text-sm text-gray-500">
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Google Gemini 2.0 Flash</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Comprehensive analysis</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Key insights extraction</li>
+</ul>
+</div>
+
+<!-- Feature 3: Lightning Fast -->
+<div class="feature-card bg-white p-8 rounded-2xl shadow-lg">
+<div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center mb-6">
+<i class="fas fa-bolt text-yellow-600 text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Lightning Fast</h3>
+<p class="text-gray-600 mb-4">
+Get comprehensive results in 15-20 seconds with optimized parallel
+processing and intelligent caching.
+</p>
+<ul class="space-y-2 text-sm text-gray-500">
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>15-20 second responses</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Parallel processing</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Optimized performance</li>
+</ul>
+</div>
+
+<!-- Feature 4: Natural Language -->
+<div class="feature-card bg-white p-8 rounded-2xl shadow-lg">
+<div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+<i class="fas fa-comments text-purple-600 text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Natural Language</h3>
+<p class="text-gray-600 mb-4">
+Ask questions in plain English and get conversational, detailed responses
+with proper context and explanations.
+</p>
+<ul class="space-y-2 text-sm text-gray-500">
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Conversational interface</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Context-aware responses</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Detailed explanations</li>
+</ul>
+</div>
+
+<!-- Feature 5: Source Attribution -->
+<div class="feature-card bg-white p-8 rounded-2xl shadow-lg">
+<div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+<i class="fas fa-link text-indigo-600 text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Source Attribution</h3>
+<p class="text-gray-600 mb-4">
+Every response includes detailed source attribution with relevance scores
+and direct links to original content.
+</p>
+<ul class="space-y-2 text-sm text-gray-500">
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Detailed source links</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Relevance scoring</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Credibility assessment</li>
+</ul>
+</div>
+
+<!-- Feature 6: CLI & Python API -->
+<div class="feature-card bg-white p-8 rounded-2xl shadow-lg">
+<div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+<i class="fas fa-terminal text-red-600 text-2xl"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">CLI & Python API</h3>
+<p class="text-gray-600 mb-4">
+Use WebIntel from command line or integrate into your Python applications
+with our comprehensive API.
+</p>
+<ul class="space-y-2 text-sm text-gray-500">
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Command line interface</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Python API integration</li>
+<li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Rich output formatting</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Quick Start Section -->
+<section id="docs" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Get Started in Minutes</h2>
+<p class="text-xl text-gray-600">Simple installation and powerful capabilities</p>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-12 items-start">
+<!-- Installation Steps -->
+<div class="space-y-8">
+<div class="bg-white p-8 rounded-2xl shadow-lg">
+<h3 class="text-2xl font-semibold text-gray-900 mb-6">Installation</h3>
+
+<!-- Step 1 -->
+<div class="flex items-start space-x-4 mb-6">
+<div class="w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">1</div>
+<div class="flex-1">
+<h4 class="font-semibold text-gray-900 mb-2">Install WebIntel</h4>
+<div class="code-block p-4">
+<code class="text-green-400 font-mono text-sm">pip install webintel</code>
+</div>
+<p class="text-sm text-gray-500 mt-2">Install from <a href="https://pypi.org/project/webintel/2.0.0/" class="text-primary-600 hover:underline">PyPI Package</a></p>
+</div>
+</div>
+
+<!-- Step 2 -->
+<div class="flex items-start space-x-4 mb-6">
+<div class="w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">2</div>
+<div class="flex-1">
+<h4 class="font-semibold text-gray-900 mb-2">Set up API Key</h4>
+<div class="code-block p-4">
+<code class="text-blue-400 font-mono text-sm">export GEMINI_API_KEY="your-api-key"</code>
+</div>
+<p class="text-sm text-gray-500 mt-2">Get your free API key from <a href="https://makersuite.google.com/app/apikey" class="text-primary-600 hover:underline">Google AI Studio</a></p>
+</div>
+</div>
+
+<!-- Step 3 -->
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-semibold text-sm">3</div>
+<div class="flex-1">
+<h4 class="font-semibold text-gray-900 mb-2">Start Researching</h4>
+<div class="code-block p-4">
+<code class="text-yellow-400 font-mono text-sm">webintel search "AI trends 2024"</code>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Requirements -->
+<div class="bg-white p-8 rounded-2xl shadow-lg">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Requirements</h3>
+<ul class="space-y-3">
+<li class="flex items-center text-gray-600">
+<i class="fas fa-check text-green-500 mr-3"></i>
+Python 3.8 or higher
+</li>
+<li class="flex items-center text-gray-600">
+<i class="fas fa-check text-green-500 mr-3"></i>
+Google Gemini API key (free)
+</li>
+<li class="flex items-center text-gray-600">
+<i class="fas fa-check text-green-500 mr-3"></i>
+Internet connection
+</li>
+</ul>
+</div>
+</div>
+
+<!-- Live Example -->
+<div class="bg-white p-8 rounded-2xl shadow-lg">
+<h3 class="text-xl font-semibold text-gray-900 mb-6">Live Example</h3>
+
+<!-- Terminal Simulation -->
+<div class="code-block">
+<div class="flex items-center justify-between p-4 border-b border-gray-700">
+<div class="flex space-x-2">
+<div class="w-3 h-3 bg-red-500 rounded-full"></div>
+<div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+</div>
+<span class="text-gray-400 text-sm">webintel-demo</span>
+</div>
+<div class="p-4 font-mono text-sm space-y-2">
+<div class="text-green-400">$ webintel search "Bitcoin price analysis today"</div>
+<div class="text-gray-400">🔍 Searching across multiple engines...</div>
+<div class="text-gray-400">🤖 AI analysis with Gemini 2.0 Flash...</div>
+<div class="text-green-400">✅ Found 3 sources in 16.2s</div>
+<div class="text-white mt-4">
+<div class="text-blue-400">📊 Bitcoin Analysis Summary:</div>
+<div class="text-gray-300 mt-2">Current Price: $43,250 (+2.4%)</div>
+<div class="text-gray-300">Market Cap: $847B</div>
+<div class="text-gray-300">24h Volume: $28.5B</div>
+<div class="text-yellow-400 mt-3">🔍 Key Insights:</div>
+<div class="text-gray-300">• Strong bullish momentum</div>
+<div class="text-gray-300">• Institutional adoption rising</div>
+<div class="text-gray-300">• Technical indicators positive</div>
+<div class="text-blue-400 mt-3">📚 Sources:</div>
+<div class="text-gray-300">• coinmarketcap.com (Score: 0.95)</div>
+<div class="text-gray-300">• coindesk.com (Score: 0.88)</div>
+<div class="text-gray-300">• cointelegraph.com (Score: 0.82)</div>
+</div>
+</div>
+</div>
+
+<!-- Try It Button -->
+<div class="mt-6">
+<button class="w-full bg-primary-600 hover:bg-primary-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors">
+<i class="fas fa-play mr-2"></i>
+Try Interactive Demo
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Examples Section -->
+<section id="examples" class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Real-World Examples</h2>
+<p class="text-xl text-gray-600">See WebIntel in action across different use cases</p>
+</div>
+
+<!-- Example Tabs -->
+<div class="mb-8">
+<div class="flex flex-wrap justify-center gap-4">
+<button class="example-tab active px-6 py-3 bg-primary-600 text-white rounded-lg font-medium transition-colors" data-example="research">
+<i class="fas fa-search mr-2"></i>Research
+</button>
+<button class="example-tab px-6 py-3 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-lg font-medium transition-colors" data-example="finance">
+<i class="fas fa-chart-line mr-2"></i>Finance
+</button>
+<button class="example-tab px-6 py-3 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-lg font-medium transition-colors" data-example="tech">
+<i class="fas fa-microchip mr-2"></i>Technology
+</button>
+<button class="example-tab px-6 py-3 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-lg font-medium transition-colors" data-example="news">
+<i class="fas fa-newspaper mr-2"></i>News
+</button>
+</div>
+</div>
+
+<!-- Example Content -->
+<div class="grid lg:grid-cols-2 gap-8">
+<!-- Command Examples -->
+<div class="space-y-6">
+<!-- Research Example -->
+<div class="example-content" id="research-example">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Academic Research</h3>
+<div class="code-block p-6">
+<div class="font-mono text-sm space-y-3">
+<div class="text-green-400"># Research latest AI developments</div>
+<div class="text-blue-400">webintel search "machine learning breakthroughs 2024"</div>
+<div class="text-gray-400 mt-2"># Get comprehensive analysis</div>
+<div class="text-blue-400">webintel search "climate change impact studies" --max-results 5</div>
+<div class="text-gray-400 mt-2"># Compare different perspectives</div>
+<div class="text-blue-400">webintel search "renewable energy vs fossil fuels debate"</div>
+</div>
+</div>
+</div>
+
+<!-- Finance Example -->
+<div class="example-content hidden" id="finance-example">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Financial Analysis</h3>
+<div class="code-block p-6">
+<div class="font-mono text-sm space-y-3">
+<div class="text-green-400"># Market analysis</div>
+<div class="text-blue-400">webintel search "S&P 500 outlook 2024"</div>
+<div class="text-gray-400 mt-2"># Cryptocurrency research</div>
+<div class="text-blue-400">webintel search "Bitcoin ETF approval impact"</div>
+<div class="text-gray-400 mt-2"># Economic indicators</div>
+<div class="text-blue-400">webintel search "inflation trends Federal Reserve policy"</div>
+</div>
+</div>
+</div>
+
+<!-- Technology Example -->
+<div class="example-content hidden" id="tech-example">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">Technology Trends</h3>
+<div class="code-block p-6">
+<div class="font-mono text-sm space-y-3">
+<div class="text-green-400"># Latest tech developments</div>
+<div class="text-blue-400">webintel search "quantum computing advances 2024"</div>
+<div class="text-gray-400 mt-2"># Programming trends</div>
+<div class="text-blue-400">webintel search "Python vs JavaScript 2024 comparison"</div>
+<div class="text-gray-400 mt-2"># Startup ecosystem</div>
+<div class="text-blue-400">webintel search "AI startup funding trends"</div>
+</div>
+</div>
+</div>
+
+<!-- News Example -->
+<div class="example-content hidden" id="news-example">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">News Analysis</h3>
+<div class="code-block p-6">
+<div class="font-mono text-sm space-y-3">
+<div class="text-green-400"># Breaking news analysis</div>
+<div class="text-blue-400">webintel search "latest international news today"</div>
+<div class="text-gray-400 mt-2"># Political developments</div>
+<div class="text-blue-400">webintel search "US election 2024 updates"</div>
+<div class="text-gray-400 mt-2"># Global events</div>
+<div class="text-blue-400">webintel search "G20 summit outcomes 2024"</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Python API Examples -->
+<div class="space-y-6">
+<h3 class="text-xl font-semibold text-gray-900">Python API Integration</h3>
+
+<div class="code-block p-6">
+<div class="font-mono text-sm space-y-2">
+<div class="text-purple-400">import</div> <div class="text-white">asyncio</div>
+<div class="text-purple-400">from</div> <div class="text-white">webintel</div> <div class="text-purple-400">import</div> <div class="text-white">DataProcessor, get_default_config</div>
+<div class="text-gray-400 mt-4"># Initialize WebIntel</div>
+<div class="text-purple-400">async def</div> <div class="text-yellow-400">research_topic</div><div class="text-white">(query):</div>
+<div class="text-white ml-4">config = get_default_config()</div>
+<div class="text-white ml-4">processor = DataProcessor(config)</div>
+<div class="text-gray-400 ml-4 mt-2"># Get comprehensive analysis</div>
+<div class="text-white ml-4">result = </div><div class="text-purple-400">await</div> <div class="text-white">processor.process_query(query, max_results=</div><div class="text-green-400">3</div><div class="text-white">)</div>
+<div class="text-purple-400 ml-4">return</div> <div class="text-white">result</div>
+<div class="text-gray-400 mt-4"># Usage example</div>
+<div class="text-white">result = asyncio.run(research_topic(</div><div class="text-green-400">"AI ethics guidelines"</div><div class="text-white">))</div>
+<div class="text-purple-400">print</div><div class="text-white">(result[</div><div class="text-green-400">'answer'</div><div class="text-white">])</div>
+</div>
+</div>
+
+<!-- Use Cases -->
+<div class="bg-gray-50 p-6 rounded-xl">
+<h4 class="font-semibold text-gray-900 mb-4">Perfect for:</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-green-500 mr-2"></i>
+Market Research
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-green-500 mr-2"></i>
+Competitive Analysis
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-green-500 mr-2"></i>
+Academic Research
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-green-500 mr-2"></i>
+News Monitoring
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-green-500 mr-2"></i>
+Trend Analysis
+</div>
+<div class="flex items-center text-sm text-gray-600">
+<i class="fas fa-check text-green-500 mr-2"></i>
+Content Creation
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- API Reference Section -->
+<section id="api" class="py-20 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">API Reference</h2>
+<p class="text-xl text-gray-600">Complete documentation for WebIntel's powerful API</p>
+</div>
+
+<div class="grid lg:grid-cols-3 gap-8">
+<!-- CLI Commands -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Search Command -->
+<div class="bg-white p-8 rounded-2xl shadow-lg">
+<h3 class="text-2xl font-semibold text-gray-900 mb-6">CLI Commands</h3>
+
+<!-- Search Command -->
+<div class="mb-8">
+<h4 class="text-lg font-semibold text-gray-900 mb-4">webintel search</h4>
+<p class="text-gray-600 mb-4">Perform intelligent web research with AI analysis</p>
+
+<div class="code-block p-4 mb-4">
+<code class="text-green-400 font-mono text-sm">webintel search "your query" [options]</code>
+</div>
+
+<div class="space-y-3">
+<div class="flex items-start space-x-3">
+<code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">--max-results</code>
+<div>
+<p class="text-sm text-gray-600">Number of sources to analyze (default: 5)</p>
+<code class="text-xs text-gray-500">webintel search "AI trends" --max-results 3</code>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">--format</code>
+<div>
+<p class="text-sm text-gray-600">Output format: rich, json, plain (default: rich)</p>
+<code class="text-xs text-gray-500">webintel search "news" --format json</code>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">--timeout</code>
+<div>
+<p class="text-sm text-gray-600">Request timeout in seconds (default: 60)</p>
+<code class="text-xs text-gray-500">webintel search "data" --timeout 30</code>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Config Command -->
+<div class="mb-8">
+<h4 class="text-lg font-semibold text-gray-900 mb-4">webintel config</h4>
+<p class="text-gray-600 mb-4">Manage WebIntel configuration</p>
+
+<div class="space-y-2">
+<div class="code-block p-3">
+<code class="text-blue-400 font-mono text-sm">webintel config set-key YOUR_API_KEY</code>
+</div>
+<div class="code-block p-3">
+<code class="text-blue-400 font-mono text-sm">webintel config show</code>
+</div>
+<div class="code-block p-3">
+<code class="text-blue-400 font-mono text-sm">webintel config reset</code>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Python API -->
+<div class="bg-white p-8 rounded-2xl shadow-lg">
+<h3 class="text-2xl font-semibold text-gray-900 mb-6">Python API</h3>
+
+<!-- DataProcessor Class -->
+<div class="mb-8">
+<h4 class="text-lg font-semibold text-gray-900 mb-4">DataProcessor</h4>
+<p class="text-gray-600 mb-4">Main class for processing web intelligence queries</p>
+
+<div class="code-block p-4 mb-4">
+<div class="font-mono text-sm space-y-1">
+<div class="text-purple-400">class</div> <div class="text-yellow-400">DataProcessor</div><div class="text-white">:</div>
+<div class="text-white ml-4">"""AI-powered data processor"""</div>
+<div class="text-purple-400 ml-4">def</div> <div class="text-yellow-400">__init__</div><div class="text-white">(self, config):</div>
+<div class="text-white ml-8">self.config = config</div>
+</div>
+</div>
+
+<!-- Methods -->
+<div class="space-y-4">
+<div>
+<h5 class="font-semibold text-gray-900 mb-2">process_query(query, max_results=5)</h5>
+<p class="text-sm text-gray-600 mb-2">Process a query and return comprehensive analysis</p>
+<div class="bg-gray-50 p-3 rounded text-xs">
+<strong>Parameters:</strong><br>
+• query (str): The search query<br>
+• max_results (int): Maximum number of sources to analyze<br><br>
+<strong>Returns:</strong> Dict with 'status', 'sources', 'answer', 'analysis'
+</div>
+</div>
+</div>
+</div>
+
+<!-- Configuration -->
+<div class="mb-8">
+<h4 class="text-lg font-semibold text-gray-900 mb-4">Configuration</h4>
+
+<div class="code-block p-4">
+<div class="font-mono text-sm space-y-1">
+<div class="text-purple-400">from</div> <div class="text-white">webintel</div> <div class="text-purple-400">import</div> <div class="text-white">get_default_config</div>
+<div class="text-white mt-2">config = get_default_config()</div>
+<div class="text-white">config.gemini.api_key = </div><div class="text-green-400">"your-api-key"</div>
+<div class="text-white">config.gemini.model_name = </div><div class="text-green-400">"gemini-2.0-flash-exp"</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Quick Reference -->
+<div class="space-y-8">
+<!-- Response Format -->
+<div class="bg-white p-6 rounded-2xl shadow-lg">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">Response Format</h3>
+
+<div class="code-block p-4">
+<div class="font-mono text-xs space-y-1">
+<div class="text-white">{</div>
+<div class="text-blue-400 ml-2">"status"</div><div class="text-white">: </div><div class="text-green-400">"success"</div><div class="text-white">,</div>
+<div class="text-blue-400 ml-2">"query"</div><div class="text-white">: </div><div class="text-green-400">"your query"</div><div class="text-white">,</div>
+<div class="text-blue-400 ml-2">"sources"</div><div class="text-white">: [</div>
+<div class="text-white ml-4">{</div>
+<div class="text-blue-400 ml-6">"title"</div><div class="text-white">: </div><div class="text-green-400">"Source Title"</div><div class="text-white">,</div>
+<div class="text-blue-400 ml-6">"url"</div><div class="text-white">: </div><div class="text-green-400">"https://..."</div><div class="text-white">,</div>
+<div class="text-blue-400 ml-6">"domain"</div><div class="text-white">: </div><div class="text-green-400">"example.com"</div><div class="text-white">,</div>
+<div class="text-blue-400 ml-6">"relevance_score"</div><div class="text-white">: </div><div class="text-yellow-400">0.95</div>
+<div class="text-white ml-4">}</div>
+<div class="text-white ml-2">],</div>
+<div class="text-blue-400 ml-2">"answer"</div><div class="text-white">: </div><div class="text-green-400">"Comprehensive AI response"</div><div class="text-white">,</div>
+<div class="text-blue-400 ml-2">"response_time"</div><div class="text-white">: </div><div class="text-yellow-400">16.2</div>
+<div class="text-white">}</div>
+</div>
+</div>
+</div>
+
+<!-- Error Handling -->
+<div class="bg-white p-6 rounded-2xl shadow-lg">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">Error Handling</h3>
+
+<div class="space-y-3 text-sm">
+<div class="flex items-start space-x-3">
+<div class="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+<div>
+<strong class="text-gray-900">API Key Missing</strong>
+<p class="text-gray-600">Set GEMINI_API_KEY environment variable</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<div class="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+<div>
+<strong class="text-gray-900">Rate Limiting</strong>
+<p class="text-gray-600">Automatic retry with exponential backoff</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+<div>
+<strong class="text-gray-900">Network Issues</strong>
+<p class="text-gray-600">Graceful fallback to available sources</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Performance Tips -->
+<div class="bg-white p-6 rounded-2xl shadow-lg">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">Performance Tips</h3>
+
+<ul class="space-y-2 text-sm text-gray-600">
+<li class="flex items-center">
+<i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+Use specific queries for better results
+</li>
+<li class="flex items-center">
+<i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+Limit max_results for faster responses
+</li>
+<li class="flex items-center">
+<i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+Cache results for repeated queries
+</li>
+<li class="flex items-center">
+<i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+Use async/await for better performance
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Community Section -->
+<section id="community" class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Join the Community</h2>
+<p class="text-xl text-gray-600">Connect with developers, researchers, and AI enthusiasts</p>
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- GitHub -->
+<div class="text-center group">
+<div class="w-20 h-20 bg-gray-900 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+<i class="fab fa-github text-white text-3xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">GitHub</h3>
+<p class="text-gray-600 mb-4">Contribute to the project, report issues, and request features</p>
+<a href="https://github.com/JustM3Sunny/webintel" class="text-primary-600 hover:text-primary-700 font-medium">
+View Repository →
+</a>
+</div>
+
+<!-- PyPI -->
+<div class="text-center group">
+<div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+<i class="fab fa-python text-white text-3xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">PyPI</h3>
+<p class="text-gray-600 mb-4">Install WebIntel directly from the Python Package Index</p>
+<a href="https://pypi.org/project/webintel/2.0.0/" class="text-primary-600 hover:text-primary-700 font-medium">
+View Package →
+</a>
+</div>
+
+<!-- Documentation -->
+<div class="text-center group">
+<div class="w-20 h-20 bg-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+<i class="fas fa-book text-white text-3xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Documentation</h3>
+<p class="text-gray-600 mb-4">Comprehensive guides, tutorials, and API reference</p>
+<a href="installation.html" class="text-primary-600 hover:text-primary-700 font-medium">
+Read Docs →
+</a>
+</div>
+
+<!-- Support -->
+<div class="text-center group">
+<div class="w-20 h-20 bg-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+<i class="fas fa-life-ring text-white text-3xl"></i>
+</div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">Support</h3>
+<p class="text-gray-600 mb-4">Get help, ask questions, and share your experiences</p>
+<a href="https://github.com/JustM3Sunny/webintel/discussions" class="text-primary-600 hover:text-primary-700 font-medium">
+Get Support →
+</a>
+</div>
+</div>
+
+<!-- Stats -->
+<div class="mt-16 bg-gray-50 rounded-2xl p-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+<div>
+<div class="text-3xl font-bold text-primary-600 mb-2">10K+</div>
+<div class="text-gray-600">Downloads</div>
+</div>
+<div>
+<div class="text-3xl font-bold text-primary-600 mb-2">500+</div>
+<div class="text-gray-600">GitHub Stars</div>
+</div>
+<div>
+<div class="text-3xl font-bold text-primary-600 mb-2">50+</div>
+<div class="text-gray-600">Contributors</div>
+</div>
+<div>
+<div class="text-3xl font-bold text-primary-600 mb-2">99.9%</div>
+<div class="text-gray-600">Uptime</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Brand -->
+<div class="lg:col-span-2">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
+<i class="fas fa-brain text-white text-lg"></i>
+</div>
+<div>
+<h3 class="text-xl font-bold">WebIntel</h3>
+<p class="text-gray-400 text-sm">AI Web Intelligence</p>
+</div>
+</div>
+<p class="text-gray-400 mb-6 max-w-md">
+Transform any query into comprehensive insights with real-time web research,
+AI analysis, and intelligent data synthesis.
+</p>
+<div class="flex space-x-4">
+<a href="https://github.com/JustM3Sunny/webintel" class="text-gray-400 hover:text-white transition-colors">
+<i class="fab fa-github text-xl"></i>
+</a>
+<a href="https://pypi.org/project/webintel/2.0.0/" class="text-gray-400 hover:text-white transition-colors">
+<i class="fab fa-python text-xl"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<i class="fab fa-twitter text-xl"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors">
+<i class="fab fa-linkedin text-xl"></i>
+</a>
+</div>
+</div>
+
+<!-- Quick Links -->
+<div>
+<h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+<ul class="space-y-3">
+<li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+<li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+<li><a href="installation.html" class="text-gray-400 hover:text-white transition-colors">Installation</a></li>
+<li><a href="examples.html" class="text-gray-400 hover:text-white transition-colors">Examples</a></li>
+<li><a href="api-reference.html" class="text-gray-400 hover:text-white transition-colors">API Reference</a></li>
+</ul>
+</div>
+
+<!-- Resources -->
+<div>
+<h4 class="text-lg font-semibold mb-6">Resources</h4>
+<ul class="space-y-3">
+<li><a href="https://github.com/JustM3Sunny/webintel" class="text-gray-400 hover:text-white transition-colors">GitHub Repository</a></li>
+<li><a href="https://pypi.org/project/webintel/2.0.0/" class="text-gray-400 hover:text-white transition-colors">PyPI Package</a></li>
+<li><a href="https://github.com/JustM3Sunny/webintel/releases" class="text-gray-400 hover:text-white transition-colors">Release Notes</a></li>
+<li><a href="https://github.com/JustM3Sunny/webintel#contributing" class="text-gray-400 hover:text-white transition-colors">Contributing Guide</a></li>
+<li><a href="https://github.com/JustM3Sunny/webintel/blob/main/LICENSE" class="text-gray-400 hover:text-white transition-colors">License</a></li>
+</ul>
+</div>
+</div>
+
+<!-- Bottom Bar -->
+<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">
+© 2024 WebIntel. All rights reserved. Built with ❤️ for the AI community.
+</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Contact</a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+<script>
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
+});
+
+// Example tabs functionality
+document.querySelectorAll('.example-tab').forEach(tab => {
+tab.addEventListener('click', function() {
+// Remove active class from all tabs
+document.querySelectorAll('.example-tab').forEach(t => {
+t.classList.remove('active', 'bg-primary-600', 'text-white');
+t.classList.add('bg-gray-200', 'text-gray-700');
+});
+
+// Add active class to clicked tab
+this.classList.add('active', 'bg-primary-600', 'text-white');
+this.classList.remove('bg-gray-200', 'text-gray-700');
+
+// Hide all example content
+document.querySelectorAll('.example-content').forEach(content => {
+content.classList.add('hidden');
+});
+
+// Show selected example content
+const exampleType = this.getAttribute('data-example');
+const targetContent = document.getElementById(exampleType + '-example');
+if (targetContent) {
+targetContent.classList.remove('hidden');
+}
+});
+});
+
+// Typing animation for hero section
+function typeWriter(element, text, speed = 100) {
+let i = 0;
+element.innerHTML = '';
+
+function type() {
+if (i < text.length) {
+element.innerHTML += text.charAt(i);
+i++;
+setTimeout(type, speed);
+}
+}
+
+type();
+}
+
+// Initialize typing animation when page loads
+window.addEventListener('load', function() {
+const typingElement = document.querySelector('.typing-animation');
+if (typingElement) {
+setTimeout(() => {
+typeWriter(typingElement, 'Generating comprehensive insights...', 80);
+}, 2000);
+}
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+const navbar = document.querySelector('nav');
+if (window.scrollY > 100) {
+navbar.classList.add('bg-white/95');
+navbar.classList.remove('bg-white/80');
+} else {
+navbar.classList.add('bg-white/80');
+navbar.classList.remove('bg-white/95');
+}
+});
+
+// Copy code functionality
+function copyCode(button) {
+const codeBlock = button.nextElementSibling.querySelector('code');
+const text = codeBlock.textContent;
+
+navigator.clipboard.writeText(text).then(function() {
+button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+button.classList.add('bg-green-600');
+
+setTimeout(() => {
+button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+button.classList.remove('bg-green-600');
+}, 2000);
+});
+}
+
+// Add copy buttons to code blocks
+document.addEventListener('DOMContentLoaded', function() {
+document.querySelectorAll('.code-block').forEach(block => {
+if (!block.querySelector('.copy-button')) {
+const copyButton = document.createElement('button');
+copyButton.className = 'copy-button absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition-colors';
+copyButton.innerHTML = '<i class="fas fa-copy"></i> Copy';
+copyButton.onclick = function() { copyCode(this); };
+
+block.style.position = 'relative';
+block.appendChild(copyButton);
+}
+});
+});
+
+// Mobile menu toggle
+const mobileMenuButton = document.querySelector('.md\\:hidden button');
+const mobileMenu = document.createElement('div');
+mobileMenu.className = 'md:hidden bg-white border-t border-gray-200 px-4 py-4 space-y-2';
+mobileMenu.innerHTML = `
+<a href="#home" class="block text-gray-700 hover:text-primary-600 font-medium py-2">Home</a>
+<a href="#features" class="block text-gray-700 hover:text-primary-600 font-medium py-2">Features</a>
+<a href="#docs" class="block text-gray-700 hover:text-primary-600 font-medium py-2">Documentation</a>
+<a href="#examples" class="block text-gray-700 hover:text-primary-600 font-medium py-2">Examples</a>
+<a href="#api" class="block text-gray-700 hover:text-primary-600 font-medium py-2">API Reference</a>
+<a href="#community" class="block text-gray-700 hover:text-primary-600 font-medium py-2">Community</a>
+`;
+mobileMenu.style.display = 'none';
+
+if (mobileMenuButton) {
+mobileMenuButton.parentNode.parentNode.appendChild(mobileMenu);
+
+mobileMenuButton.addEventListener('click', function() {
+if (mobileMenu.style.display === 'none') {
+mobileMenu.style.display = 'block';
+this.innerHTML = '<i class="fas fa-times text-xl"></i>';
+} else {
+mobileMenu.style.display = 'none';
+this.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+}
+});
+}
+
+// Intersection Observer for animations
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('animate-fade-in');
+}
+});
+}, observerOptions);
+
+// Observe all feature cards
+document.querySelectorAll('.feature-card').forEach(card => {
+observer.observe(card);
+});
+
+// Add fade-in animation class
+const style = document.createElement('style');
+style.textContent = `
+.animate-fade-in {
+animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>

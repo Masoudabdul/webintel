@@ -23,7 +23,7 @@ from .processor import DataProcessor
 console = Console()
 
 @click.group()
-@click.version_option(version="1.0.0")
+@click.version_option(version="2.0.1")
 @click.option('--config', '-c', type=click.Path(), help='Configuration file path')
 @click.option('--verbose', '-v', is_flag=True, help='Enable verbose logging')
 @click.pass_context
@@ -36,7 +36,8 @@ def cli(ctx, config: Optional[str], verbose: bool):
     """
     # Setup logging - completely silent unless verbose
     if verbose:
-        setup_logging("DEBUG")
+        import logging
+        logging.basicConfig(level=logging.DEBUG)
     else:
         # Completely disable all logging
         import logging
@@ -343,9 +344,21 @@ def show(ctx):
 def main():
     """Main entry point"""
     try:
+        # Auto-setup WebIntel on first run
+        try:
+            from . import setup_webintel
+            setup_webintel()
+        except ImportError:
+            pass
+
         cli()
     except KeyboardInterrupt:
         console.print("\n[yellow]Interrupted by user[/yellow]")
+        sys.exit(1)
+    except Exception as e:
+        console.print(f"\n[red]Error: {str(e)}[/red]")
+        console.print("\n[yellow]Tip: Make sure you have set your GEMINI_API_KEY environment variable[/yellow]")
+        console.print("[yellow]Get your free API key from: https://makersuite.google.com/app/apikey[/yellow]")
         sys.exit(1)
 
 if __name__ == '__main__':

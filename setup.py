@@ -24,7 +24,7 @@ if requirements_path.exists():
 
 setup(
     name="webintel",
-    version="2.0.0",
+    version="2.0.1",
     author="JustM3Sunny",
     author_email="justm3sunny@gmail.com",
     description="🤖 AI-Powered Web Intelligence System - Real-time research, comprehensive analysis, and intelligent insights using Google Gemini 2.0 Flash",
@@ -100,7 +100,7 @@ setup(
         "Bug Reports": "https://github.com/JustM3Sunny/webintel/issues",
         "Feature Requests": "https://github.com/JustM3Sunny/webintel/discussions",
         "Changelog": "https://github.com/JustM3Sunny/webintel/releases",
-        "PyPI": "https://pypi.org/project/webintel/",
+        "PyPI": "https://pypi.org/project/webintel/2.0.0/",
     },
     include_package_data=True,
     package_data={

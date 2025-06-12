@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - WebIntel</title>
+    <meta name="description" content="Complete API reference for WebIntel - AI-powered web intelligence system">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .code-block {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-brain text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">WebIntel</h1>
+                        <p class="text-xs text-gray-500">API Reference</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="installation.html" class="text-gray-600 hover:text-gray-900">Install</a>
+                    <a href="https://github.com/JustM3Sunny/webintel" class="text-gray-600 hover:text-gray-900">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">API Reference</h1>
+            <p class="text-xl text-gray-600">Complete documentation for WebIntel's CLI and Python API</p>
+        </div>
+
+        <div class="grid lg:grid-cols-4 gap-8">
+            <!-- Sidebar Navigation -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
+                    <h3 class="font-semibold text-gray-900 mb-4">Quick Navigation</h3>
+                    <nav class="space-y-2">
+                        <a href="#cli-commands" class="block text-blue-600 hover:text-blue-800">CLI Commands</a>
+                        <a href="#python-api" class="block text-gray-600 hover:text-blue-600">Python API</a>
+                        <a href="#configuration" class="block text-gray-600 hover:text-blue-600">Configuration</a>
+                        <a href="#response-format" class="block text-gray-600 hover:text-blue-600">Response Format</a>
+                        <a href="#error-handling" class="block text-gray-600 hover:text-blue-600">Error Handling</a>
+                        <a href="#examples" class="block text-gray-600 hover:text-blue-600">Examples</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-3 space-y-8">
+                <!-- CLI Commands -->
+                <section id="cli-commands" class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">🖥️ CLI Commands</h2>
+                    
+                    <!-- Search Command -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">webintel search</h3>
+                        <p class="text-gray-600 mb-4">Perform intelligent web research with AI analysis</p>
+                        
+                        <div class="code-block p-4 mb-4">
+                            <code class="text-green-400 font-mono text-sm">webintel search "your query" [options]</code>
+                        </div>
+
+                        <h4 class="font-semibold text-gray-900 mb-3">Options:</h4>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">--max-results, -n</code>
+                                <p class="text-sm text-gray-600 mt-1">Number of sources to analyze (default: 20)</p>
+                                <div class="code-block p-2 mt-2">
+                                    <code class="text-xs text-gray-300">webintel search "AI trends" --max-results 5</code>
+                                </div>
+                            </div>
+                            
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">--format, -f</code>
+                                <p class="text-sm text-gray-600 mt-1">Output format: rich, json, markdown, plain (default: rich)</p>
+                                <div class="code-block p-2 mt-2">
+                                    <code class="text-xs text-gray-300">webintel search "news" --format json</code>
+                                </div>
+                            </div>
+                            
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">--save, -s</code>
+                                <p class="text-sm text-gray-600 mt-1">Save results to file</p>
+                                <div class="code-block p-2 mt-2">
+                                    <code class="text-xs text-gray-300">webintel search "data" --save</code>
+                                </div>
+                            </div>
+                            
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">--output-dir, -o</code>
+                                <p class="text-sm text-gray-600 mt-1">Output directory for saved results</p>
+                                <div class="code-block p-2 mt-2">
+                                    <code class="text-xs text-gray-300">webintel search "research" --output-dir ./results</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Config Commands -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">webintel config</h3>
+                        <p class="text-gray-600 mb-4">Manage WebIntel configuration</p>
+                        
+                        <div class="space-y-3">
+                            <div class="code-block p-3">
+                                <code class="text-blue-400 font-mono text-sm">webintel config set-api-key YOUR_API_KEY</code>
+                            </div>
+                            <div class="code-block p-3">
+                                <code class="text-blue-400 font-mono text-sm">webintel config show</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Version Command -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">webintel --version</h3>
+                        <p class="text-gray-600 mb-4">Display version information</p>
+                        
+                        <div class="code-block p-3">
+                            <code class="text-green-400 font-mono text-sm">webintel --version</code>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Python API -->
+                <section id="python-api" class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">🐍 Python API</h2>
+                    
+                    <!-- DataProcessor Class -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">DataProcessor Class</h3>
+                        <p class="text-gray-600 mb-4">Main class for processing web intelligence queries</p>
+                        
+                        <div class="code-block p-4 mb-4">
+                            <div class="font-mono text-sm space-y-1">
+                                <div class="text-purple-400">from</div> <span class="text-white">webintel</span> <span class="text-purple-400">import</span> <span class="text-white">DataProcessor</span>
+                                <div class="text-purple-400">from</div> <span class="text-white">webintel.config</span> <span class="text-purple-400">import</span> <span class="text-white">get_default_config</span>
+                                <div class="mt-2 text-gray-400"># Initialize processor</div>
+                                <div class="text-white">config = get_default_config()</div>
+                                <div class="text-white">processor = DataProcessor(config)</div>
+                            </div>
+                        </div>
+
+                        <!-- Methods -->
+                        <h4 class="font-semibold text-gray-900 mb-3">Methods:</h4>
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-lg p-4">
+                                <h5 class="font-semibold text-gray-900 mb-2">process_query(query, max_results=20)</h5>
+                                <p class="text-sm text-gray-600 mb-3">Process a query and return comprehensive analysis</p>
+                                
+                                <div class="bg-gray-50 p-3 rounded text-xs space-y-1">
+                                    <div><strong>Parameters:</strong></div>
+                                    <div>• <code>query</code> (str): The search query</div>
+                                    <div>• <code>max_results</code> (int): Maximum number of sources to analyze</div>
+                                    <div class="mt-2"><strong>Returns:</strong></div>
+                                    <div>Dict with 'status', 'sources', 'answer', 'analysis', 'processing_time'</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Basic Usage -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Basic Usage Example</h3>
+                        
+                        <div class="code-block p-4">
+                            <div class="font-mono text-sm space-y-1">
+                                <div class="text-purple-400">import</div> <span class="text-white">asyncio</span>
+                                <div class="text-purple-400">from</div> <span class="text-white">webintel</span> <span class="text-purple-400">import</span> <span class="text-white">DataProcessor, get_default_config</span>
+                                <div class="mt-2 text-purple-400">async def</div> <span class="text-yellow-400">main</span><span class="text-white">():</span>
+                                <div class="text-white ml-4">config = get_default_config()</div>
+                                <div class="text-white ml-4">processor = DataProcessor(config)</div>
+                                <div class="text-white ml-4">result = </div><span class="text-purple-400">await</span> <span class="text-white">processor.process_query(</span>
+                                <div class="text-white ml-8">"artificial intelligence trends 2024"</div>
+                                <div class="text-white ml-4">)</div>
+                                <div class="text-purple-400 ml-4">print</div><span class="text-white">(result[</span><span class="text-green-400">'answer'</span><span class="text-white">])</span>
+                                <div class="mt-2 text-white">asyncio.run(main())</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Configuration -->
+                <section id="configuration" class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">⚙️ Configuration</h2>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Environment Variables</h3>
+                        <div class="code-block p-4">
+                            <div class="font-mono text-sm space-y-1">
+                                <div class="text-green-400">export GEMINI_API_KEY="your-api-key"</div>
+                                <div class="text-green-400">export WEBINTEL_MAX_RESULTS=10</div>
+                                <div class="text-green-400">export WEBINTEL_OUTPUT_FORMAT="rich"</div>
+                                <div class="text-green-400">export WEBINTEL_TIMEOUT=30</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-3">Configuration File</h3>
+                        <p class="text-gray-600 mb-3">Location: <code class="bg-gray-100 px-2 py-1 rounded">~/.webintel/config.yaml</code></p>
+                        
+                        <div class="code-block p-4">
+                            <div class="font-mono text-sm space-y-1">
+                                <div class="text-gray-400"># Google Gemini AI Configuration</div>
+                                <div class="text-blue-400">gemini:</div>
+                                <div class="text-white ml-2">api_key: "your-api-key-here"</div>
+                                <div class="text-white ml-2">model_name: "gemini-2.0-flash"</div>
+                                <div class="text-white ml-2">max_tokens: 8192</div>
+                                <div class="text-white ml-2">temperature: 0.7</div>
+                                <div class="mt-2 text-gray-400"># Output Configuration</div>
+                                <div class="text-blue-400">output:</div>
+                                <div class="text-white ml-2">format: "rich"</div>
+                                <div class="text-white ml-2">save_to_file: false</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Response Format -->
+                <section id="response-format" class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">📋 Response Format</h2>
+                    
+                    <div class="code-block p-4">
+                        <div class="font-mono text-xs space-y-1">
+                            <div class="text-white">{</div>
+                            <div class="text-blue-400 ml-2">"status"</div><span class="text-white">: </span><span class="text-green-400">"success"</span><span class="text-white">,</span>
+                            <div class="text-blue-400 ml-2">"query"</div><span class="text-white">: </span><span class="text-green-400">"your query"</span><span class="text-white">,</span>
+                            <div class="text-blue-400 ml-2">"sources"</div><span class="text-white">: [</span>
+                            <div class="text-white ml-4">{</div>
+                            <div class="text-blue-400 ml-6">"title"</div><span class="text-white">: </span><span class="text-green-400">"Source Title"</span><span class="text-white">,</span>
+                            <div class="text-blue-400 ml-6">"url"</div><span class="text-white">: </span><span class="text-green-400">"https://..."</span><span class="text-white">,</span>
+                            <div class="text-blue-400 ml-6">"domain"</div><span class="text-white">: </span><span class="text-green-400">"example.com"</span><span class="text-white">,</span>
+                            <div class="text-blue-400 ml-6">"relevance_score"</div><span class="text-white">: </span><span class="text-yellow-400">0.95</span>
+                            <div class="text-white ml-4">}</div>
+                            <div class="text-white ml-2">],</div>
+                            <div class="text-blue-400 ml-2">"answer"</div><span class="text-white">: </span><span class="text-green-400">"Comprehensive AI response"</span><span class="text-white">,</span>
+                            <div class="text-blue-400 ml-2">"analysis"</div><span class="text-white">: {</span>
+                            <div class="text-blue-400 ml-4">"key_findings"</div><span class="text-white">: [</span><span class="text-green-400">"insight 1"</span><span class="text-white">, </span><span class="text-green-400">"insight 2"</span><span class="text-white">],</span>
+                            <div class="text-blue-400 ml-4">"comprehensive_answer"</div><span class="text-white">: </span><span class="text-green-400">"Detailed analysis"</span>
+                            <div class="text-white ml-2">},</div>
+                            <div class="text-blue-400 ml-2">"processing_time"</div><span class="text-white">: </span><span class="text-yellow-400">16.2</span>
+                            <div class="text-white">}</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Error Handling -->
+                <section id="error-handling" class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">🚨 Error Handling</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-semibold text-gray-900">API Key Missing</h4>
+                            <p class="text-gray-600 text-sm">Set GEMINI_API_KEY environment variable or use config command</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-yellow-500 pl-4">
+                            <h4 class="font-semibold text-gray-900">Rate Limiting</h4>
+                            <p class="text-gray-600 text-sm">Automatic retry with exponential backoff</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <h4 class="font-semibold text-gray-900">Network Issues</h4>
+                            <p class="text-gray-600 text-sm">Graceful fallback to available sources</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Examples -->
+                <section id="examples" class="bg-white rounded-2xl shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">💡 Quick Examples</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Basic Search</h3>
+                            <div class="code-block p-3">
+                                <code class="text-green-400 font-mono text-sm">webintel search "AI trends 2024"</code>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">JSON Output</h3>
+                            <div class="code-block p-3">
+                                <code class="text-green-400 font-mono text-sm">webintel search "market research" --format json</code>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Save Results</h3>
+                            <div class="code-block p-3">
+                                <code class="text-green-400 font-mono text-sm">webintel search "climate change" --save --output-dir ./research</code>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-gray-400">
+                © 2024 WebIntel. Made with ❤️ by 
+                <a href="https://github.com/JustM3Sunny" class="text-blue-400 hover:underline">JustM3Sunny</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
