@@ -1,12 +1,12 @@
 # 🧠 WebIntel - Advanced Web Intelligence System
 
-[![PyPI version](https://badge.fury.io/py/webintel.svg)](https://pypi.org/project/webintel/2.0.0/)
+[![PyPI version](https://badge.fury.io/py/webintel.svg)](https://pypi.org/project/webintel/2.0.1/)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/JustM3Sunny/webintel.svg)](https://github.com/JustM3Sunny/webintel/stargazers)
 [![Downloads](https://pepy.tech/badge/webintel)](https://pepy.tech/project/webintel)
 [![Documentation](https://img.shields.io/badge/docs-comprehensive-brightgreen.svg)](https://github.com/JustM3Sunny/webintel#readme)
-[![PyPI Package](https://img.shields.io/badge/PyPI-webintel-blue.svg)](https://pypi.org/project/webintel/2.0.0/)
+[![PyPI Package](https://img.shields.io/badge/PyPI-webintel-blue.svg)](https://pypi.org/project/webintel/2.0.1/)
 
 WebIntel is a **superfast AI-powered web intelligence system** that provides real-time web research, comprehensive analysis, and intelligent insights using Google Gemini 2.0 Flash. Get comprehensive research results in **10-20 seconds** with **90%+ success rate**.
 
@@ -57,7 +57,7 @@ pip install -e .
 - **Memory**: 512MB RAM minimum
 
 ### 📦 Package Information
-- **PyPI Package**: [webintel](https://pypi.org/project/webintel/2.0.0/)
+- **PyPI Package**: [webintel](https://pypi.org/project/webintel/2.0.1/)
 - **Import Name**: `webintel` (use `from webintel import DataProcessor`)
 - **CLI Command**: `webintel` (after installation)
 
@@ -287,14 +287,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🔗 Important Links
 
 ### 📦 Package & Repository
-- **PyPI Package**: [webintel on PyPI](https://pypi.org/project/webintel/2.0.0/)
+- **PyPI Package**: [webintel on PyPI](https://pypi.org/project/webintel/2.0.1/)
 - **GitHub Repository**: [JustM3Sunny/webintel](https://github.com/JustM3Sunny/webintel)
 - **Documentation**: [Full Documentation](https://github.com/JustM3Sunny/webintel#readme)
 - **Releases**: [GitHub Releases](https://github.com/JustM3Sunny/webintel/releases)
 
 ### 🛠️ Development & API
 - **Google Gemini API**: [Get API Key](https://makersuite.google.com/app/apikey)
-- **Python Package Index**: [PyPI Project Page](https://pypi.org/project/webintel/2.0.0/)
+- **Python Package Index**: [PyPI Project Page](https://pypi.org/project/webintel/2.0.1/)
 - **Issue Tracker**: [Report Bugs](https://github.com/JustM3Sunny/webintel/issues)
 - **Feature Requests**: [Request Features](https://github.com/JustM3Sunny/webintel/discussions)
 
@@ -307,7 +307,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/JustM3Sunny/webintel/issues)
 - **GitHub Discussions**: [Community discussions](https://github.com/JustM3Sunny/webintel/discussions)
-- **PyPI Package**: [webintel on PyPI](https://pypi.org/project/webintel/2.0.0/)
+- **PyPI Package**: [webintel on PyPI](https://pypi.org/project/webintel/2.0.1/)
 - **Email Support**: justm3sunny@gmail.com
 
 ## 🔗 Quick Links
@@ -323,7 +323,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🚀 Version Information
 
-- **Current Version**: 2.0.0
+- **Current Version**: 2.0.1
 - **Python Support**: 3.8+
 - **Package Name**: webintel
 - **Import Name**: webintel
