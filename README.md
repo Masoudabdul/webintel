@@ -1,6 +1,6 @@
 # 🧠 WebIntel - Advanced Web Intelligence System
 
-[![PyPI version](https://badge.fury.io/py/webintel.svg)](https://pypi.org/project/webintel/2.0.4/)
+[![PyPI version](https://badge.fury.io/py/webintel.svg)](https://pypi.org/project/webintel/2.0.3/)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/JustM3Sunny/webintel.svg)](https://github.com/JustM3Sunny/webintel/stargazers)
